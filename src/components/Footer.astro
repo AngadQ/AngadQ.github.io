@@ -1,16 +1,14 @@
 ---
-import Social from './Social.astro';
+import { profile } from '../data/portfolio';
 ---
-<style>
-  footer {
-    display: flex;
-    gap: 1rem;
-    margin-top: 2rem;
-  }
-</style>
 
-<footer>
-    <Social platform="twitter" username="astrodotbuild" />
-    <Social platform="github" username="withastro" />
-    <Social platform="youtube" username="astrodotbuild" />
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© {new Date().getFullYear()} {profile.name}</p>
+    <div class="footer-links">
+      {profile.email && <a href={`mailto:${profile.email}`}>Email</a>}
+      {profile.github && <a href={profile.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a>}
+      {profile.linkedin && <a href={profile.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>}
+    </div>
+  </div>
 </footer>

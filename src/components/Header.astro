@@ -1,19 +1,18 @@
 ---
 import Navigation from './Navigation.astro';
-
-import Menu from './Menu.astro';
+import { profile } from '../data/portfolio';
 ---
-<style>
-  footer {
-    display: flex;
-    gap: 1rem;
-    margin-top: 2rem;
-  }
-</style>
 
-<header>
-  <nav>
-    <Menu />
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="site-brand" href="/" aria-label={`${profile.name}, home`}>
+      <span class="brand-mark" aria-hidden="true">AK<span>.</span></span>
+      <span class="brand-name">{profile.name}</span>
+    </a>
     <Navigation />
-  </nav>
+    <button class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Toggle color theme">
+      <span class="theme-icon" aria-hidden="true">◐</span>
+      <span class="theme-label">Theme</span>
+    </button>
+  </div>
 </header>
