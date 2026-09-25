@@ -1,0 +1,14 @@
+---
+import WorkDetail from '../../components/WorkDetail.astro';
+import { projects } from '../../data/portfolio';
+
+export function getStaticPaths() {
+  return projects
+    .filter((item) => item.visible && item.detailPage)
+    .map((item) => ({ params: { slug: item.slug }, props: { item } }));
+}
+
+const { item } = Astro.props;
+---
+
+<WorkDetail item={item} kind="projects" />

@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+type Props = {
+  item: {
+    title: string;
+    dates: string;
+    summary: string;
+    organization?: string;
+    context?: string;
+    tools?: string[];
+    images?: { src: string; alt: string; caption?: string }[];
+    links?: { label: string; href: string }[];
+    videoFile?: string;
+    videoEmbedUrl?: string;
+    details?: string[];
+    highlights?: string[];
+  };
+  kind: 'research' | 'projects';
+};
+
+const { item, kind } = Astro.props;
+const sectionLabel = kind === 'research' ? 'Research' : 'Projects';
+const context = item.organization ?? item.context;
+---
+
+<BaseLayout title={`${item.title} · Angad Kochhar`} description={item.summary}>
+  <main id="main-content" class="container detail-page">
+    <p class="breadcrumbs"><a href="/">Home</a> / <a href={`/${kind}/`}>{sectionLabel}</a> / {item.title}</p>
+
+    <header class="detail-heading">
+      <p class="work-date">{item.dates}</p>
+      <h1>{item.title}</h1>
+      {context && <p class="detail-context">{context}</p>}
+      <p class="detail-summary">{item.summary}</p>
+      {item.tools && item.tools.length > 0 && (
+        <ul class="tag-list" aria-label="Tools and topics">
+          {item.tools.map((tool) => <li>{tool}</li>)}
+        </ul>
+      )}
+    </header>
+
+    {item.images && item.images.length > 0 && (
+      <section class="detail-gallery" aria-label="Project photographs">
+        {item.images.map((image) => (
+          <figure>
+            <img src={image.src} alt={image.alt} loading="lazy" />
+            {image.caption && <figcaption>{image.caption}</figcaption>}
+          </figure>
+        ))}
+      </section>
+    )}
+
+    <div class="detail-columns">
+      <article class="detail-body">
+        <h2>About this work</h2>
+        {item.details && item.details.length > 0 ? (
+          item.details.map((paragraph) => <p>{paragraph}</p>)
+        ) : (
+          <p>{item.summary}</p>
+        )}
+      </article>
+
+      {(item.highlights?.length || item.links?.length) && (
+        <aside class="detail-aside">
+          {item.highlights && item.highlights.length > 0 && (
+            <>
+              <h2>Highlights</h2>
+              <ul>{item.highlights.map((highlight) => <li>{highlight}</li>)}</ul>
+            </>
+          )}
+          {item.links && item.links.length > 0 && (
+            <>
+              <h2>Links</h2>
+              <ul class="plain-list">
+                {item.links.map((link) => (
+                  <li><a href={link.href} target="_blank" rel="noopener noreferrer">{link.label} ↗</a></li>
+                ))}
+              </ul>
+            </>
+          )}
+        </aside>
+      )}
+    </div>
+
+    {item.videoFile && (
+      <section class="detail-video">
+        <h2>Video</h2>
+        <video controls preload="metadata" src={item.videoFile}>Your browser does not support video.</video>
+      </section>
+    )}
+
+    {item.videoEmbedUrl && (
+      <section class="detail-video">
+        <h2>Video</h2>
+        <iframe src={item.videoEmbedUrl} title={`${item.title} video`} loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </section>
+    )}
+
+    <a class="back-link" href={`/${kind}/`}>← Back to {sectionLabel.toLowerCase()}</a>
+  </main>
+</BaseLayout>

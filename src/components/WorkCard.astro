@@ -1,0 +1,49 @@
+---
+type Props = {
+  item: {
+    slug: string;
+    detailPage: boolean;
+    title: string;
+    dates: string;
+    summary: string;
+    thumbnail?: { src: string; alt: string };
+    links?: { label: string; href: string }[];
+    videoFile?: string;
+    videoEmbedUrl?: string;
+  };
+  kind: 'research' | 'projects';
+  compact?: boolean;
+};
+
+const { item, kind, compact = false } = Astro.props;
+const detailUrl = `/${kind}/${item.slug}/`;
+---
+
+<article class:list={['work-card', { 'work-card-compact': compact }]}>
+  <div class="work-media">
+    {item.thumbnail ? (
+      <img src={item.thumbnail.src} alt={item.thumbnail.alt} loading="lazy" />
+    ) : (
+      <div class="media-placeholder" aria-hidden="true">
+        <span>{kind === 'research' ? 'R' : 'P'}</span>
+      </div>
+    )}
+  </div>
+
+  <div class="work-copy">
+    <p class="work-date">{item.dates}</p>
+    <h2>
+      {item.detailPage ? <a href={detailUrl}>{item.title}</a> : item.title}
+    </h2>
+    <p>{item.summary}</p>
+
+    <div class="work-links">
+      {item.detailPage && <a href={detailUrl}>Read more</a>}
+      {item.links?.map((link) => (
+        <a href={link.href} target="_blank" rel="noopener noreferrer">{link.label} ↗</a>
+      ))}
+      {item.videoFile && <a href={item.videoFile}>Video</a>}
+      {item.videoEmbedUrl && <a href={item.videoEmbedUrl} target="_blank" rel="noopener noreferrer">Video ↗</a>}
+    </div>
+  </div>
+</article>

@@ -5,8 +5,10 @@ const currentPath = Astro.url.pathname;
 ---
 
 <nav class="site-nav" aria-label="Main navigation">
-  <a href="/" aria-current={currentPath === '/' ? 'page' : undefined}>Home</a>
-  {sections.filter((section) => section.visible).map((section) => (
-    <a href={`/${section.slug}/`} aria-current={currentPath === `/${section.slug}/` ? 'page' : undefined}>{section.label}</a>
-  ))}
+  {sections.filter((section) => section.visible).map((section) => {
+    const href = `/${section.slug}/`;
+    const isCurrent = currentPath === href || currentPath.startsWith(href);
+
+    return <a href={href} aria-current={isCurrent ? 'page' : undefined}>{section.label}</a>;
+  })}
 </nav>

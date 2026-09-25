@@ -1,48 +1,64 @@
-// Edit this file to update the public content of your portfolio.
-// Set visible to false to omit a section from the next production build.
+// Main website content.
+//
+// To show or hide an entire page, change its `visible` value in `sections`.
+// To hide one research item or project, change that item's `visible` value.
+// To enable or disable its dedicated page, change its `detailPage` value.
 
 export const profile = {
   name: 'Angad Singh Kochhar',
+  shortName: 'Angad Kochhar',
   role: 'M.S. in Engineering, Robotics · Purdue University',
   location: 'West Lafayette, Indiana',
-  about:
-    'I am a robotics graduate student at Purdue University interested in reinforcement learning, embodied intelligence, and autonomous systems. My work spans robot perception, multi-agent systems, and hands-on engineering.',
-  portrait: '/media/Angad.jpg', // Example: '/media/portrait.jpg'
+  about: [
+    'I am a robotics graduate student at Purdue University interested in reinforcement learning, embodied intelligence, multi-agent systems, and autonomous systems.',
+    'My work connects research with hands-on engineering, from robot perception and learning to embedded systems and physical prototypes.',
+  ],
+  portrait: '/media/Angad.jpg',
   email: 'kochhar.angad@gmail.com',
   github: 'https://github.com/AngadQ',
   linkedin: 'https://www.linkedin.com/in/angad-singh-kochhar/',
   resume: '/documents/Angad_Kochhar_Resume.pdf',
-  cv: '/documents/Angad_Kochhar_Academic_CV.pdf',
+  cv: '/documents/Angad_Kochhar_CV.pdf',
 };
 
 export const sections = [
   { slug: 'education', label: 'Education', visible: true },
-  { slug: 'experience', label: 'Work Experience', visible: true },
+  { slug: 'experience', label: 'Experience', visible: true },
   { slug: 'research', label: 'Research', visible: true },
   { slug: 'projects', label: 'Projects', visible: true },
-  { slug: 'activities', label: 'Extracurriculars', visible: false },
+  { slug: 'activities', label: 'Activities', visible: true },
+];
+
+export const news = [
+  {
+    date: 'May 2026',
+    text: 'Began research on emergent tool use in multi-agent reinforcement learning at the SCALE Robotics Lab.',
+  },
+  {
+    date: 'Summer 2026',
+    text: 'Developed and tested an autonomous Connect-4 demonstration with Boston Dynamics Spot.',
+  },
+  {
+    date: 'Dec 2026',
+    text: 'Expected graduation from the M.S. in Engineering program at Purdue University.',
+  },
 ];
 
 export const skills = [
   { category: 'Programming', items: 'Python, C/C++, MATLAB, Lua' },
   { category: 'Robotics & Simulation', items: 'MuJoCo, ROS 2, CoppeliaSim, Boston Dynamics Spot, UR5e' },
-  { category: 'Machine learning', items: 'PyTorch, YOLO, Random Forest' },
-  { category: 'Embedded Systems & Hardware', items: 'ESP32, Raspberry Pi, UWB, IMU, Arduino' },
+  { category: 'Machine Learning', items: 'PyTorch, YOLO, Random Forest, reinforcement learning' },
+  { category: 'Embedded Systems', items: 'ESP32, Raspberry Pi, UWB, IMU, Arduino' },
 ];
 
-export const education: {
-  degree: string;
-  institution: string;
-  dates: string;
-  details: string[];
-}[] = [
+export const education = [
   {
     degree: 'Master of Science in Engineering, Robotics / Interdisciplinary Engineering',
     institution: 'Purdue University · West Lafayette, Indiana',
     dates: 'Jan 2025 – expected Dec 2026',
     details: [
       'GPA: 3.84 / 4.00',
-      'Selected coursework: Reinforcement Learning, Multi-Agent Autonomy & Control, Artificial Intelligence, Robotics Kinematics \& Dynamics, Linear Algebra, Mechatronics, Embedded Systems, Industrial IoT for Smart Manufacturing',
+      'Selected coursework: Reinforcement Learning, Multi-Agent Autonomy & Control, Artificial Intelligence, Robotics Kinematics & Dynamics, Linear Algebra, Mechatronics, Embedded Systems, and Industrial IoT for Smart Manufacturing.',
     ],
   },
   {
@@ -53,134 +69,229 @@ export const education: {
   },
 ];
 
-export const experience: {
-  role: string;
-  organization: string;
-  dates: string;
-  details: string[];
-}[] = [
+export const experience = [
   {
     role: 'Assistant Mechanical Engineer',
     organization: 'Static Systems Electronics Pvt. Ltd. · Gurgaon, India',
     dates: 'Sep 2020 – Dec 2024',
     details: [
-      'Supported the fabrication, fit, and installation of customized physical-security equipment for government and private-sector clients, ensuring products met customer requirements and applicable security specifications.',
-      'Served as a field engineer on customer sites, guiding installation teams, troubleshooting mechanical and installation issues, and supporting commissioning of security systems.',
-      'Coordinated directly with customers on equipment operation, installation requirements, and safe use of security systems.',
-      'Supported deployment of electric-fencing systems using NEMTEK equipment, applying manufacturer training to oversee field installations and provide technical guidance.',
+      'Supported the fabrication, fit, and installation of customized physical security equipment for government and private sector clients.',
+      'Served as a field engineer, guiding installation teams and troubleshooting mechanical and installation issues.',
+      'Coordinated with customers on equipment operation, installation requirements, and safe use.',
+      'Supported NEMTEK electric fencing deployments after receiving manufacturer product training.',
     ],
   },
 ];
 
-export const research: {
+export type MediaImage = {
+  src: string;
+  alt: string;
+  caption?: string;
+};
+
+export type WorkLink = {
+  label: string;
+  href: string;
+};
+
+export type ResearchItem = {
+  slug: string;
+  visible: boolean;
+  featured: boolean;
+  detailPage: boolean;
   title: string;
   organization: string;
   dates: string;
   summary: string;
-  link?: string;
-}[] = [
+  thumbnail?: MediaImage;
+  images?: MediaImage[];
+  links?: WorkLink[];
+  videoFile?: string;
+  videoEmbedUrl?: string;
+  details?: string[];
+  highlights?: string[];
+};
+
+export const research: ResearchItem[] = [
   {
-    title: 'Emergent tool use in multi-agent reinforcement learning',
+    slug: 'emergent-tool-use',
+    visible: true,
+    featured: true,
+    detailPage: true,
+    title: 'Emergent Tool Use in Multi-Agent Reinforcement Learning',
     organization: 'SCALE Robotics Lab, Purdue University · Advisor: Prof. Rohan R. Paleja',
     dates: 'May 2026 – present',
     summary:
-      'Leading an ongoing study of emergent behavior in physics-based MuJoCo environments. I am developing the environment and building experiments with simple rewards and reinforcement learning policies to observe how agents use objects and tools.',
+      'An ongoing study of emergent behavior in physics-based MuJoCo environments using simple rewards and reinforcement learning policies.',
+    details: [
+      'I am developing a configurable MuJoCo environment containing agents, physical objects, and interactive tools. The goal is to study how increasingly complex environments influence learned strategies and emergent interactions.',
+      'The project is building toward experiments with Proximal Policy Optimization and systematic evaluation of the behaviors that agents discover.',
+    ],
+    highlights: [
+      'Physics-based multi-agent environment design in MuJoCo',
+      'Simple reward structures and PPO policies',
+      'Analysis of emergent strategies and object interaction',
+    ],
   },
   {
+    slug: 'spot-connect-four',
+    visible: true,
+    featured: true,
+    detailPage: true,
     title: 'Autonomous Connect-4 with Boston Dynamics Spot',
     organization: 'SCALE Robotics Lab, Purdue University · Project lead: Daniel Chen',
     dates: 'May – Jul 2026',
     summary:
-      'Developed and tested a human–robot Connect-4 demo. I integrated YOLO board perception, AprilTag localization, and a minimax game strategy, then built recovery checks for chip pickup, placement, and turn detection. Testing showed over 90% chip detection and over 85% successful placement across more than 100 attempts.',
+      'A human–robot Connect-4 demonstration integrating perception, localization, game strategy, manipulation, and automatic failure recovery.',
+    details: [
+      'I integrated YOLO board perception, AprilTag localization, and a minimax game strategy, then translated the selected move into a manipulation target for Spot.',
+      'I designed checks for chip pickup, placement, and turn detection. When a manipulation attempt failed, the system could detect the problem and retry instead of continuing with an incorrect board state.',
+    ],
+    highlights: [
+      'More than 90% chip detection success across 100+ tests',
+      'More than 85% successful chip placement across 100+ tests',
+      'Visual confirmation of both human and robot moves',
+    ],
   },
   {
-    title: 'Spacecraft autonomy and multi-agent coordination',
+    slug: 'spacecraft-coordination',
+    visible: true,
+    featured: false,
+    detailPage: false,
+    title: 'Spacecraft Autonomy and Multi-Agent Coordination',
     organization: 'Purdue University · Supervisor: Prof. Kenshiro Oguri',
     dates: 'Aug – Nov 2025',
     summary:
-      'Built a MATLAB simulation of spacecraft formation flying using Clohessy–Wiltshire relative-motion equations. I added J2 perturbations and explored PID control for maintaining a three-satellite formation in low Earth orbit.',
+      'A MATLAB simulation of spacecraft formation flying using Clohessy–Wiltshire relative-motion equations, J2 perturbations, and exploratory PID control.',
   },
 ];
 
-export const projects: {
+export type ProjectItem = {
+  slug: string;
+  visible: boolean;
+  featured: boolean;
+  detailPage: boolean;
   title: string;
   dates: string;
   context: string;
   summary: string;
   tools: string[];
-  link?: string;
-  images?: { src: string; alt: string }[];
+  thumbnail?: MediaImage;
+  images?: MediaImage[];
+  links?: WorkLink[];
   videoFile?: string;
   videoEmbedUrl?: string;
-}[] = [
+  details?: string[];
+  highlights?: string[];
+};
+
+export const projects: ProjectItem[] = [
   {
-    title: 'Opinion dynamics under random edge failures',
+    slug: 'opinion-dynamics',
+    visible: true,
+    featured: true,
+    detailPage: false,
+    title: 'Opinion Dynamics under Random Edge Failures',
     dates: 'Spring 2026',
     context: 'AAE 59000 · Multi-Agent Autonomy & Control',
     summary:
-      'Studied how stubborn truth agents affect convergence in multi-agent networks with random communication failures. I ran simulation experiments to compare convergence across network conditions and presented the work as a research paper.',
+      'Studied how stubborn truth agents affect convergence in multi-agent networks with random communication failures.',
     tools: ['Python', 'MATLAB', 'Multi-agent systems'],
   },
   {
-    title: 'Low-cost indoor positioning',
+    slug: 'indoor-positioning',
+    visible: true,
+    featured: false,
+    detailPage: false,
+    title: 'Low-Cost Indoor Positioning',
     dates: 'Spring 2026',
     context: 'ECE 56800 · Embedded Systems',
     summary:
-      'Developed the UWB subsystem for an indoor positioning prototype that combined wireless ranging with inertial sensing. I tested multipath effects, implemented filtering in C++, and adjusted antenna placement to improve stability.',
+      'Developed the UWB subsystem for a positioning prototype combining wireless ranging with inertial sensing.',
     tools: ['C++', 'UWB', 'IMU', 'Embedded systems'],
   },
   {
-    title: 'Acoustic monitoring for a DED machine',
+    slug: 'ded-acoustic-monitoring',
+    visible: true,
+    featured: false,
+    detailPage: false,
+    title: 'Acoustic Monitoring for a DED Machine',
     dates: 'Spring 2026',
     context: 'ME 59700 · Industrial IoT for Smart Manufacturing',
     summary:
-      'Led a three-person team investigating abnormal acoustic signals from a directed energy deposition machine. We used isolated machine tests and a Random Forest model to identify component operating states and narrow down an anomalous signal.',
+      'Led a team investigating abnormal acoustic signals from a directed energy deposition machine using isolated tests and machine learning.',
     tools: ['Python', 'Random Forest', 'Acoustic sensing'],
   },
   {
-    title: 'ModifiedNAFNet: lightweight image restoration',
+    slug: 'modified-nafnet',
+    visible: true,
+    featured: true,
+    detailPage: true,
+    title: 'ModifiedNAFNet: Lightweight Image Restoration',
     dates: 'Spring 2025',
     context: 'ECE 57000 · Artificial Intelligence',
     summary:
-      'Reimplemented and simplified the NAFNet image restoration architecture for limited compute. The model achieved 33.66 dB PSNR and 0.9400 SSIM on the SIDD dataset after approximately two hours of training.',
+      'Reimplemented and simplified NAFNet for limited compute, reaching 33.66 dB PSNR and 0.9400 SSIM on the SIDD dataset.',
     tools: ['Python', 'PyTorch', 'Computer vision'],
+    details: [
+      'I studied the original NAFNet paper and implementation, then reduced the model width, stages, and block complexity so that the architecture could train in a limited Google Colab environment.',
+      'The project included an ICML-style paper, peer review exercise, and class presentation. It taught me how to read research papers in layers and translate an architecture from a paper into a working experiment.',
+    ],
+    highlights: [
+      '33.66 dB PSNR and 0.9400 SSIM on SIDD',
+      'Approximately two hours of training',
+      'Designed for accessible experiments with limited compute',
+    ],
   },
   {
+    slug: 'gladiator-e-cove',
+    visible: true,
+    featured: true,
+    detailPage: true,
     title: 'Gladiator E-Cove: Battle for Logistics',
     dates: 'Spring 2025',
     context: 'ME 58800 · Mechatronics',
     summary:
-      'Designed and built a dual-flywheel launcher and IR sensing system for an autonomous two-robot logistics challenge. The launcher reached about 85% delivery accuracy across more than 100 shots, and our team earned the highest score in the final competition.',
+      'Designed a dual-flywheel launcher and IR sensing system for an autonomous two-robot logistics challenge.',
     tools: ['ESP32', 'C', 'CAD', 'Mechatronics'],
+    details: [
+      'I designed the flywheel using projectile motion and energy calculations, built and refined the IR sensing circuit, and contributed to the finite state machine and ESP32 communication between the robots.',
+      'To overcome motor stall at low speed, the software first started each motor above its minimum start speed and then reduced it to the calibrated speed for the selected target.',
+    ],
+    highlights: [
+      'About 85% delivery accuracy across more than 100 shots',
+      'IR sensing range exceeded the minimum course requirement',
+      'Highest score in the final competition',
+    ],
   },
   {
-    title: 'Restaurant of the Future simulation',
+    slug: 'restaurant-simulation',
+    visible: true,
+    featured: false,
+    detailPage: false,
+    title: 'Restaurant of the Future Simulation',
     dates: 'Spring 2025',
     context: 'IE 574 · Industrial Robotics & Flexible Assembly',
     summary:
-      'Designed the layout and detailed CoppeliaSim environment for an automated restaurant with UR5e robot arms and a mobile robot. I also helped coordinate robot communication and refined trajectories through constrained spaces.',
+      'Designed a detailed automated restaurant in CoppeliaSim with UR5e robot arms and a mobile robot.',
     tools: ['CoppeliaSim', 'Lua', 'UR5e', 'Node-RED'],
   },
 ];
 
-export const activities: {
-  title: string;
-  organization: string;
-  dates: string;
-  summary: string;
-  images?: { src: string; alt: string }[];
-}[] = [
+export const activities = [
   {
     title: 'Platoon Commander',
     organization: 'Amity Greenhorns military camp',
     dates: 'Summer 2019',
     summary:
       'Selected to lead a platoon during undergraduate military training. Our platoon won the final-day parade competition.',
+    images: [] as MediaImage[],
   },
   {
     title: 'Bhangra',
     organization: 'Personal interest',
     dates: 'Since 2022',
     summary: 'I practice Bhangra, a traditional Punjabi folk dance.',
+    images: [] as MediaImage[],
   },
 ];

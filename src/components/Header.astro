@@ -1,18 +1,15 @@
 ---
 import Navigation from './Navigation.astro';
-import { profile } from '../data/portfolio';
 ---
 
 <header class="site-header">
   <div class="container header-inner">
-    <a class="site-brand" href="/" aria-label={`${profile.name}, home`}>
-      <span class="brand-mark" aria-hidden="true">AK<span>.</span></span>
-      <span class="brand-name">{profile.name}</span>
+    <a class="site-brand" href="/" aria-label="Angad Kochhar, home">
+      <strong>Angad</strong> Kochhar
     </a>
     <Navigation />
     <button class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Toggle color theme">
-      <span class="theme-icon" aria-hidden="true">◐</span>
-      <span class="theme-label">Theme</span>
+      <span aria-hidden="true">◐</span>
     </button>
   </div>
 </header>
