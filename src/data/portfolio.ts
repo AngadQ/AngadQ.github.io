@@ -7,12 +7,12 @@ export const profile = {
   location: 'West Lafayette, Indiana',
   about:
     'I am a robotics graduate student at Purdue University interested in reinforcement learning, embodied intelligence, and autonomous systems. My work spans robot perception, multi-agent systems, and hands-on engineering.',
-  portrait: '', // Example: '/media/portrait.jpg'
+  portrait: '/media/Angad.jpg', // Example: '/media/portrait.jpg'
   email: 'kochhar.angad@gmail.com',
   github: 'https://github.com/AngadQ',
   linkedin: 'https://www.linkedin.com/in/angad-singh-kochhar/',
-  resume: '/documents/resume.pdf',
-  cv: '/documents/cv.pdf',
+  resume: '/documents/Angad_Kochhar_Resume.pdf',
+  cv: '/documents/Angad_Kochhar_Academic_CV.pdf',
 };
 
 export const sections = [
@@ -20,14 +20,14 @@ export const sections = [
   { slug: 'experience', label: 'Work Experience', visible: true },
   { slug: 'research', label: 'Research', visible: true },
   { slug: 'projects', label: 'Projects', visible: true },
-  { slug: 'activities', label: 'Extracurriculars', visible: true },
+  { slug: 'activities', label: 'Extracurriculars', visible: false },
 ];
 
 export const skills = [
   { category: 'Programming', items: 'Python, C/C++, MATLAB, Lua' },
-  { category: 'Robotics', items: 'MuJoCo, ROS 2, CoppeliaSim, Boston Dynamics Spot, UR5e' },
-  { category: 'Machine learning', items: 'PyTorch, scikit-learn, YOLO, PPO' },
-  { category: 'Hardware', items: 'ESP32, Raspberry Pi, UWB, IMU, Arduino' },
+  { category: 'Robotics & Simulation', items: 'MuJoCo, ROS 2, CoppeliaSim, Boston Dynamics Spot, UR5e' },
+  { category: 'Machine learning', items: 'PyTorch, YOLO, Random Forest' },
+  { category: 'Embedded Systems & Hardware', items: 'ESP32, Raspberry Pi, UWB, IMU, Arduino' },
 ];
 
 export const education: {
@@ -42,7 +42,7 @@ export const education: {
     dates: 'Jan 2025 – expected Dec 2026',
     details: [
       'GPA: 3.84 / 4.00',
-      'Selected coursework: Reinforcement Learning, Multi-Agent Autonomy & Control, Artificial Intelligence, Robotics Kinematics & Dynamics, Mechatronics, and Embedded Systems.',
+      'Selected coursework: Reinforcement Learning, Multi-Agent Autonomy & Control, Artificial Intelligence, Robotics Kinematics \& Dynamics, Linear Algebra, Mechatronics, Embedded Systems, Industrial IoT for Smart Manufacturing',
     ],
   },
   {
@@ -64,10 +64,10 @@ export const experience: {
     organization: 'Static Systems Electronics Pvt. Ltd. · Gurgaon, India',
     dates: 'Sep 2020 – Dec 2024',
     details: [
-      'Supported the fit, finish, and mechanical integration of customized physical security equipment for government and private clients.',
-      'Guided installation teams at customer sites and resolved mechanical and installation issues during deployment.',
-      'Worked directly with customers on installation requirements, equipment operation, and safe use.',
-      'Supported electric fencing deployments using NEMTEK equipment after manufacturer training.',
+      'Supported the fabrication, fit, and installation of customized physical-security equipment for government and private-sector clients, ensuring products met customer requirements and applicable security specifications.',
+      'Served as a field engineer on customer sites, guiding installation teams, troubleshooting mechanical and installation issues, and supporting commissioning of security systems.',
+      'Coordinated directly with customers on equipment operation, installation requirements, and safe use of security systems.',
+      'Supported deployment of electric-fencing systems using NEMTEK equipment, applying manufacturer training to oversee field installations and provide technical guidance.',
     ],
   },
 ];

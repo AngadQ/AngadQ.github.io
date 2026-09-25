@@ -25,3 +25,4 @@ pnpm-debug.log*
 
 # Portfolio_content folder
 .Portfolio_content/
+.vscode/ 
