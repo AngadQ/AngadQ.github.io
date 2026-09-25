@@ -10,8 +10,10 @@ export const profile = {
   role: 'M.S. in Engineering, Robotics · Purdue University',
   location: 'West Lafayette, Indiana',
   about: [
-    'I am a robotics graduate student at Purdue University interested in reinforcement learning, embodied intelligence, multi-agent systems, and autonomous systems.',
-    'My work connects research with hands-on engineering, from robot perception and learning to embedded systems and physical prototypes.',
+    'I am a graduate student in Robotics at Purdue University, currently pursuing an M.S.E. with interests in reinforcement learning, multi-agent systems, embodied intelligence, robot learning, and autonomous systems.',
+    `My background started in Mechanical & Automation Engineering, followed by more than four years of professional experience as an Assistant Mechanical Engineer and field engineer. I later moved into robotics, artificial intelligence, and autonomous systems through my graduate studies at Purdue.`,
+    `I am currently a student researcher in Purdue's SCALE Robotics Lab, where I am working on a multi-agent reinforcement learning project inspired by research on emergent tool use. My work focuses on developing physics-based environments in MuJoCo and studying how simple rewards and learning algorithms can lead to complex agent behaviors.`,
+    `I am especially interested in understanding how intelligent agents learn, interact with their environments, coordinate with other agents, and develop complex behaviors from simple objectives.`,
   ],
   portrait: '/media/Angad.jpg',
   email: 'kochhar.angad@gmail.com',
@@ -26,7 +28,7 @@ export const sections = [
   { slug: 'experience', label: 'Experience', visible: true },
   { slug: 'research', label: 'Research', visible: true },
   { slug: 'projects', label: 'Projects', visible: true },
-  { slug: 'activities', label: 'Activities', visible: true },
+  { slug: 'activities', label: 'Activities', visible: false },
 ];
 
 export const news = [
@@ -118,7 +120,7 @@ export const research: ResearchItem[] = [
     visible: true,
     featured: true,
     detailPage: true,
-    title: 'Emergent Tool Use in Multi-Agent Reinforcement Learning',
+    title: 'Predicting Emergent Strategies in multi-Agent Reinforcement learning',
     organization: 'SCALE Robotics Lab, Purdue University · Advisor: Prof. Rohan R. Paleja',
     dates: 'May 2026 – present',
     summary:
@@ -156,7 +158,7 @@ export const research: ResearchItem[] = [
   {
     slug: 'spacecraft-coordination',
     visible: true,
-    featured: false,
+    featured: true,
     detailPage: false,
     title: 'Spacecraft Autonomy and Multi-Agent Coordination',
     organization: 'Purdue University · Supervisor: Prof. Kenshiro Oguri',
@@ -191,11 +193,11 @@ export const projects: ProjectItem[] = [
     visible: true,
     featured: true,
     detailPage: false,
-    title: 'Opinion Dynamics under Random Edge Failures',
+    title: 'Impact of Stubborn Truth Agents on Convergence in Opinion Dynamics under Random Edge Failures',
     dates: 'Spring 2026',
     context: 'AAE 59000 · Multi-Agent Autonomy & Control',
     summary:
-      'Studied how stubborn truth agents affect convergence in multi-agent networks with random communication failures.',
+      'Investigated truth propagation in distributed multi-agent networks using opinion-dynamics models with stubborn truth agents, random communication failures, and varying network connectivity.',
     tools: ['Python', 'MATLAB', 'Multi-agent systems'],
   },
   {
@@ -203,7 +205,7 @@ export const projects: ProjectItem[] = [
     visible: true,
     featured: false,
     detailPage: false,
-    title: 'Low-Cost Indoor Positioning',
+    title: 'Low-Cost Indoor Positioning Using Combined Inertial Navigation and Wireless Positioning',
     dates: 'Spring 2026',
     context: 'ECE 56800 · Embedded Systems',
     summary:
@@ -215,7 +217,7 @@ export const projects: ProjectItem[] = [
     visible: true,
     featured: false,
     detailPage: false,
-    title: 'Acoustic Monitoring for a DED Machine',
+    title: 'DED Machine Monitoring Using Acoustic Machine Learning',
     dates: 'Spring 2026',
     context: 'ME 59700 · Industrial IoT for Smart Manufacturing',
     summary:
