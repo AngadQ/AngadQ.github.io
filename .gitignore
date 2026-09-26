@@ -23,6 +23,6 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
-# Portfolio_content folder
-.Portfolio_content/
+# Private portfolio source content
+Portfolio_content/
 .vscode/ 
